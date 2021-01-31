@@ -1,0 +1,12 @@
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  commented:
+    if: startsWith(github.event.comment.body, '/random ')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: yuya-takeyama/pick-random-member-action@main
+        with:
+          github-token: ${{ secrets.ORG_GITHUB_TOKEN }}
